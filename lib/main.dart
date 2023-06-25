@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:statemanagement/CounterController.dart';
 import 'package:statemanagement/one.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -32,14 +33,63 @@ class MyPage extends StatefulWidget {
   State<MyPage> createState() => _MyPageState();
 }
 
+int c = 0;
+final CounterController count = Get.put(CounterController());
+
 class _MyPageState extends State<MyPage> {
-  bool theme = false;
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           floatingActionButton: FloatingActionButton(onPressed: () {}),
           body: Column(children: [
+            Card(
+              child: ListTile(
+                leading: IconButton(
+                  icon: Icon(CupertinoIcons.greaterthan_circle),
+                  onPressed: () {
+                    count.remove();
+                    // setState(() {});
+                  },
+                ),
+                title: Obx(() {
+                  return count.a.toString().text.make();
+                }),
+                subtitle: 'Counter using getx statemanagement'.text.make(),
+                trailing: IconButton(
+                  icon: Icon(CupertinoIcons.lessthan_circle),
+                  onPressed: () {
+                    count.add();
+                    // setState(() {});
+                  },
+                ),
+              ),
+            ),
+            Card(
+              child: ListTile(
+                leading: IconButton(
+                  icon: Icon(CupertinoIcons.greaterthan_circle),
+                  onPressed: () {
+                    c++;
+                    setState(() {});
+                  },
+                ),
+                title: "${c}".text.make(),
+                subtitle: 'Counter'.text.make(),
+                trailing: IconButton(
+                  icon: Icon(CupertinoIcons.lessthan_circle),
+                  onPressed: () {
+                    c--;
+                    setState(() {});
+                  },
+                ),
+              ),
+            ),
             Card(
               child: ListTile(
                 leading: Icon(CupertinoIcons.home),
@@ -94,7 +144,7 @@ class _MyPageState extends State<MyPage> {
                 onPressed: () {
                   Get.changeTheme(ThemeData.dark());
                 },
-                icon: Icon(CupertinoIcons.color_filter_fill),
+                icon: Icon(CupertinoIcons.lightbulb_fill),
               ),
               title: "Change Theme".text.make(),
               subtitle: 'getx usage of Theme'.text.make(),
@@ -103,7 +153,7 @@ class _MyPageState extends State<MyPage> {
                 onPressed: () {
                   Get.changeTheme(ThemeData.light());
                 },
-                icon: Icon(CupertinoIcons.color_filter),
+                icon: Icon(CupertinoIcons.lightbulb),
               ),
             )),
           ]).pLTRB(0, 40, 0, 0)),
