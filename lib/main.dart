@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:statemanagement/one.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 void main() {
@@ -49,7 +50,7 @@ class _MyPageState extends State<MyPage> {
                     titlePadding: EdgeInsets.all(20),
                     title: "this is dialog ",
                     middleText: "this show the getx property of default dialog",
-                    onConfirm: () => print("hello"),
+                    onConfirm: () => Get.to(One()),
                     onCancel: () => Get.back(),
                   );
                 },
