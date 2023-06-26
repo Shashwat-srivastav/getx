@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "84957932271",
+    "project_id": "automated-shape-339716",
+    "storage_bucket": "automated-shape-339716.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84957932271:android:448b61e5a4d81a17fec91a",
+        "android_client_info": {
+          "package_name": "com.example.statemanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84957932271-7cue4hhqp3lmd56n1fpgbo3blhjko6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZn0od0M_zq400Y0--8CuQbLMtdzowOWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84957932271-7cue4hhqp3lmd56n1fpgbo3blhjko6v8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

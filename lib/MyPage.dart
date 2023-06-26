@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -17,6 +18,7 @@ class MyPage extends StatefulWidget {
 
 int c = 0;
 final CounterController count = Get.put(CounterController());
+final ImagePickerController camera = Get.put(ImagePickerController());
 
 class _MyPageState extends State<MyPage> {
   @override
@@ -170,6 +172,37 @@ class _MyPageState extends State<MyPage> {
                   icon: Icon(CupertinoIcons.lightbulb),
                 ),
               )),
+              ClipRRect(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Colors.white54.withOpacity(0.5)),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        color: Colors.white54.withOpacity(0.2)),
+                    child: Obx(() {
+                      return ListTile(
+                          tileColor: Colors.blueGrey.withOpacity(0.1),
+                          trailing: IconButton(
+                            icon: Icon(CupertinoIcons.camera_viewfinder),
+                            onPressed: () {
+                              camera.getImage();
+                            },
+                          ),
+                          title: "Image from camera using getx".text.make(),
+                          leading: Column(children: [
+                            CircleAvatar(
+                              radius: 28,
+                              backgroundImage: camera.pathof.isNotEmpty
+                                  ? FileImage(File(camera.pathof.toString()))
+                                  : null,
+                            ),
+                          ]));
+                    }),
+                  ),
+                ),
+              ),
             ]).pLTRB(0, 40, 0, 0),
           )),
     );
