@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:statemanagement/Auth.dart';
 import 'package:statemanagement/MyPage.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -14,6 +16,9 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final Auth _auth = Get.put(Auth());
+  String email = '';
+  String pass = '';
   String name = "";
   int x = 0;
 
@@ -59,11 +64,15 @@ class _SignUpState extends State<SignUp> {
                           gapPadding: 4.0),
                       hintText: "Email Id",
                       prefixIcon: Icon(CupertinoIcons.profile_circled)),
+                  onChanged: (value) {
+                    email = value;
+                  },
                 ).pLTRB(0, 0, 0, 20),
                 TextFormField(
                         onChanged: (value) {
-                          name = value;
-                          setState(() {});
+                          pass = value;
+                          // name = value;
+                          // setState(() {});
                         },
                         validator: (value) {
                           if (value!.length <= 10) {
@@ -93,7 +102,17 @@ class _SignUpState extends State<SignUp> {
                                 gapPadding: 4.0)))
                     .pLTRB(0, 0, 0, 50),
                 InkWell(
-                    onTap: () => Get.to(MyPage()),
+                    //Password Authentication---------------------------------------------
+                    onTap: () async {
+                      try {
+                        final credential =
+                            await _auth.signInWithEmailAndPassword(
+                                email: email, password: pass);
+                        Get.to(MyPage());
+                      } on FirebaseAuthException catch (e) {
+                        Get.snackbar('Authentication', '${e.message}');
+                      }
+                    },
                     child: ClipRRect(
                       child: BackdropFilter(
                         filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
