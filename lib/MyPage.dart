@@ -22,7 +22,9 @@ int c = 0;
 double x = 0;
 final CounterController count = Get.put(CounterController());
 final ImagePickerController camera = Get.put(ImagePickerController());
+final Todo task = Get.put(Todo());
 final timer tm = Get.put(timer());
+var tasks = '';
 var t = 0;
 
 class _MyPageState extends State<MyPage> {
@@ -201,6 +203,7 @@ class _MyPageState extends State<MyPage> {
                   ),
                 ),
                 ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
                     child: Container(
@@ -315,8 +318,62 @@ class _MyPageState extends State<MyPage> {
                         ),
                       ),
                     ),
-                  ).p(5),
+                  ).pLTRB(0, 5, 0, 5),
                 ),
+                Card(
+                    color: Colors.transparent,
+                    elevation: 0,
+                    child: Obx(
+                      () => Container(
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              TextField(
+                                style: TextStyle(color: Colors.cyanAccent[200]),
+                                onSubmitted: (value) {
+                                  task.add(value.obs);
+                                },
+                              ),
+                              ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  itemCount: task.list.length,
+                                  itemBuilder: ((context, index) {
+                                    return ClipRRect(
+                                      child: BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 20, sigmaY: 20),
+                                        child: Container(
+                                          height: 50,
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(40),
+                                              color:
+                                                  Colors.white.withOpacity(0.2),
+                                              border: Border.all(
+                                                  color: Colors.white
+                                                      .withOpacity(0.2))),
+                                          child: ListTile(
+                                              // leading:
+                                              onTap: () {
+                                                task.list
+                                                    .remove(task.list[index]);
+                                                task.list.refresh();
+                                              },
+                                              title: task.list[index].value.text
+                                                  .amber300
+                                                  .make()),
+                                        ).pLTRB(0, 5, 0, 5),
+                                      ),
+                                    );
+                                  }))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ))
               ]).pLTRB(0, 20, 0, 20),
             ),
           )),

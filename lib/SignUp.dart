@@ -6,17 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:statemanagement/Auth.dart';
 import 'package:statemanagement/MyPage.dart';
-import 'package:statemanagement/SignUp.dart';
+import 'package:statemanagement/SignIn.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class SignIn extends StatefulWidget {
+  const SignIn({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignInState extends State<SignIn> {
   final Auth _auth = Get.put(Auth());
   String email = '';
   String pass = '';
@@ -89,7 +89,7 @@ class _SignUpState extends State<SignUp> {
                         decoration: InputDecoration(
                             hintText: "Password",
                             prefixIcon: Icon(CupertinoIcons.padlock),
-                            fillColor: Colors.white,
+                            fillColor: Colors.white30,
                             border: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: Colors.white54.withOpacity(0.3)),
@@ -107,9 +107,9 @@ class _SignUpState extends State<SignUp> {
                     onTap: () async {
                       try {
                         final credential =
-                            await _auth.signInWithEmailAndPassword(
+                            await _auth.createUserWithEmailAndPassword(
                                 email: email, password: pass);
-                        Get.to(MyPage());
+                        Get.to(SignUp());
                       } on FirebaseAuthException catch (e) {
                         Get.snackbar('Authentication', '${e.message}');
                       }
@@ -121,24 +121,6 @@ class _SignUpState extends State<SignUp> {
                           height: MediaQuery.of(context).size.height * 0.038,
                           width: MediaQuery.of(context).size.width * 0.26,
                           child: "Sign In".text.white.base.make().centered(),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white24.withOpacity(0.4)),
-                        ),
-                      ),
-                    )).centered().p(10),
-                InkWell(
-                    //Password Authentication---------------------------------------------
-                    onTap: () {
-                      Get.to(SignIn());
-                    },
-                    child: ClipRRect(
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.038,
-                          width: MediaQuery.of(context).size.width * 0.26,
-                          child: "Sign Up".text.white.base.make().centered(),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.white24.withOpacity(0.4)),

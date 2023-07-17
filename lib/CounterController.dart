@@ -2,9 +2,18 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Todo extends GetxController {
-  var RxList = [];
-  void add(el) {
-    RxList.add(el);
+  RxList<RxString> list = ['x'.obs, 'y'.obs].obs;
+  void add(RxString el) {
+    list.add(el);
+  }
+}
+
+class Contact {
+  late String ph;
+  late String name;
+  Contac(var p, var n) {
+    this.ph = p;
+    this.name = n;
   }
 }
 

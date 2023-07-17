@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:statemanagement/CounterController.dart';
+import 'package:statemanagement/MyPage.dart';
 import 'package:statemanagement/SignIn.dart';
 import 'package:statemanagement/one.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -25,7 +26,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: const SignUp(),
+      home:
+          // const MyPage(),
+          const SignUp(),
     );
   }
 }
