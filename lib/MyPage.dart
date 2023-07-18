@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:statemanagement/adddata.dart';
+import 'package:statemanagement/allapi.dart';
+import 'package:statemanagement/api.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'CounterController.dart';
@@ -95,6 +97,7 @@ class _MyPageState extends State<MyPage> {
                     ),
                   ),
                 ),
+                //-----------------------------------------counter using setstate------------------------------
                 Card(
                   child: ListTile(
                     leading: IconButton(
@@ -115,6 +118,7 @@ class _MyPageState extends State<MyPage> {
                     ),
                   ),
                 ),
+                //------------------------------popup dialog using getx---------------------------------------------
                 Card(
                   child: ListTile(
                     leading: Icon(CupertinoIcons.home),
@@ -132,6 +136,7 @@ class _MyPageState extends State<MyPage> {
                     },
                   ),
                 ),
+                //-----------------------------SnackBar using getx----------------------------------------
                 Card(
                   child: ListTile(
                     leading: Icon(CupertinoIcons.rectangle_compress_vertical),
@@ -143,6 +148,7 @@ class _MyPageState extends State<MyPage> {
                     },
                   ),
                 ),
+                //-----------------------------bottom sheet using getx----------------------------------------
                 Card(
                   child: ListTile(
                     leading: Icon(CupertinoIcons.rectangle_dock),
@@ -203,6 +209,7 @@ class _MyPageState extends State<MyPage> {
                     ),
                   ),
                 ),
+                //----------------------------------Image from gallery ----------------------------------------
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: BackdropFilter(
@@ -235,6 +242,7 @@ class _MyPageState extends State<MyPage> {
                     ),
                   ),
                 ),
+                //--------------------------------------Timer application------------------------------------------
                 Obx(
                   () => ClipRRect(
                     borderRadius: BorderRadius.circular(40),
@@ -321,6 +329,7 @@ class _MyPageState extends State<MyPage> {
                     ),
                   ).pLTRB(0, 5, 0, 5),
                 ),
+                //-------------------------Todo List Application ----------------------------------------
                 Card(
                     color: Colors.transparent,
                     elevation: 0,
@@ -374,7 +383,27 @@ class _MyPageState extends State<MyPage> {
                           ],
                         ),
                       ),
-                    ))
+                    )),
+                //----------------------------API integration---------------------------------
+                Card(
+                  color: Colors.transparent,
+                  elevation: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: Colors.white.withOpacity(0.2),
+                        border:
+                            Border.all(color: Colors.white.withOpacity(0.2))),
+                    child: ListTile(
+                      title: 'API integration using http'.text.make(),
+                      onTap: () async {
+                        // ignore: prefer_const_constructors
+                        return Get.to(AllApi());
+                      },
+                    ),
+                  ),
+                )
+                //--------------------------------------------------------------------
               ]).pLTRB(0, 20, 0, 20),
             ),
           )),
