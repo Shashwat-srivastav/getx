@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:statemanagement/adddata.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'CounterController.dart';
@@ -38,7 +39,7 @@ class _MyPageState extends State<MyPage> {
     return SafeArea(
       child: Scaffold(
           floatingActionButton: FloatingActionButton(onPressed: () {
-            Get.back();
+            Get.to(ContactPage());
           }),
           body: Container(
             height: double.maxFinite,
@@ -324,18 +325,18 @@ class _MyPageState extends State<MyPage> {
                     color: Colors.transparent,
                     elevation: 0,
                     child: Obx(
-                      () => Container(
-                        height: MediaQuery.of(context).size.height * 0.5,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              TextField(
-                                style: TextStyle(color: Colors.cyanAccent[200]),
-                                onSubmitted: (value) {
-                                  task.add(value.obs);
-                                },
-                              ),
-                              ListView.builder(
+                      () => SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            TextField(
+                              style: TextStyle(color: Colors.cyanAccent[200]),
+                              onSubmitted: (value) {
+                                task.add(value.obs);
+                              },
+                            ),
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.14,
+                              child: ListView.builder(
                                   scrollDirection: Axis.vertical,
                                   shrinkWrap: true,
                                   itemCount: task.list.length,
@@ -368,9 +369,9 @@ class _MyPageState extends State<MyPage> {
                                         ).pLTRB(0, 5, 0, 5),
                                       ),
                                     );
-                                  }))
-                            ],
-                          ),
+                                  })),
+                            ),
+                          ],
                         ),
                       ),
                     ))
