@@ -329,6 +329,25 @@ class _MyPageState extends State<MyPage> {
                     ),
                   ).pLTRB(0, 5, 0, 5),
                 ),
+                //----------------------------API integration---------------------------------
+                Card(
+                  color: Colors.transparent,
+                  elevation: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: Colors.white.withOpacity(0.2),
+                        border:
+                            Border.all(color: Colors.white.withOpacity(0.2))),
+                    child: ListTile(
+                      title: 'API integration using http'.text.make(),
+                      onTap: () async {
+                        // ignore: prefer_const_constructors
+                        return Get.to(AllApi());
+                      },
+                    ),
+                  ),
+                ),
                 //-------------------------Todo List Application ----------------------------------------
                 Card(
                     color: Colors.transparent,
@@ -384,25 +403,7 @@ class _MyPageState extends State<MyPage> {
                         ),
                       ),
                     )),
-                //----------------------------API integration---------------------------------
-                Card(
-                  color: Colors.transparent,
-                  elevation: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        color: Colors.white.withOpacity(0.2),
-                        border:
-                            Border.all(color: Colors.white.withOpacity(0.2))),
-                    child: ListTile(
-                      title: 'API integration using http'.text.make(),
-                      onTap: () async {
-                        // ignore: prefer_const_constructors
-                        return Get.to(AllApi());
-                      },
-                    ),
-                  ),
-                )
+
                 //--------------------------------------------------------------------
               ]).pLTRB(0, 20, 0, 20),
             ),

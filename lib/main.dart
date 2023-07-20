@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:statemanagement/CounterController.dart';
 import 'package:statemanagement/MyPage.dart';
 import 'package:statemanagement/SignIn.dart';
+import 'package:statemanagement/allapi.dart';
 import 'package:statemanagement/api.dart';
 import 'package:statemanagement/one.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
       ),
       home:
-          //  APIdataRender(),
+          // AllApi(),
           // const MyPage(),
           const SignUp(),
     );

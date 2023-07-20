@@ -61,33 +61,28 @@ class _APIdataRenderState extends State<APIdataRender> {
               // print(LQ);
               return SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: LQ.length,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            height: MediaQuery.of(context).size.height * 0.1,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color.fromARGB(255, 154, 232, 228),
-                                      Color.fromARGB(255, 141, 155, 233)
-                                    ])),
-                            child: ListTile(
-                              horizontalTitleGap: 20,
-                              title: LQ[index].autor.text.make(),
-                              subtitle: LQ[index].quote.text.make(),
-                            ),
-                          ).p(5);
-                        }).p(30),
-                  ],
-                ),
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: LQ.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color.fromARGB(255, 190, 233, 230),
+                                  Color.fromARGB(255, 175, 180, 208)
+                                ])),
+                        child: ListTile(
+                          horizontalTitleGap: 20,
+                          title: LQ[index].autor.text.make(),
+                          subtitle: LQ[index].quote.text.make(),
+                        ),
+                      ).p(5);
+                    }).p(30),
               );
             } else {
               return CircularProgressIndicator().scale200().centered();
